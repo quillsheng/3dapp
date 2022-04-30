@@ -2,11 +2,11 @@
 $(document).ready(function() {
 	// Create the XMLHttpRequest Object for communicating with the web server
 	var xmlHttp = new XMLHttpRequest ();
-    // Stores newly generated gallery HTML code
+	// Stores newly generated gallery HTML code
 	var htmlCode = "";
 	// Temporarily stores server response while code is generated
 	var response;
-	// Set up the path to the PHP function that reads the image directory to find the thumbnail file names
+	// Set up a path variable to the PHP function that reads the image directory to find the thumbnail file names
 	var send = "scripts/php/hook.php";
 	// Open the connection to the web server
 	xmlHttp.open("GET", send, true);
@@ -18,15 +18,17 @@ $(document).ready(function() {
 			// Response handler code
 			//alert(xmlHttp.responseText);
 			response = xmlHttp.responseText.split("~");
-
+			// Loop round the response array
 			for (var i=0;i<response.length;i++) {
-				htmlCode += '<a href="assets/images/gallery_images' + response[i] +'">';
+				// Handeler to build the HTML string
+				// Use this to provide a link to the image
+				htmlCode += '<a href="assets/images/gallery_images' + response[i] +' " ' + ' data-fancybox data-caption="My X3D model render" > ';
 				htmlCode += '<img class="card-img-top img-thumbnail" src="assets/images/gallery_images' + response[i] + '"/>';
-				htmlCode += '</a>';
+				htmlCode += '</a>';			
 			}
-			document.getElementById('gallery_coke').innerHTML = htmlCode;
-			document.getElementById('gallery_sprite').innerHTML = htmlCode;
-			document.getElementById('gallery_pepper').innerHTML = htmlCode;		
+			
+			// Return the HTML string to each of the 3 3D App element blocks, coke, sprite and pepper galleries
+			document.getElementById('gallery').innerHTML = htmlCode;
 		}
 	}
 });
