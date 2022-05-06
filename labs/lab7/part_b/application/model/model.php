@@ -20,7 +20,7 @@ class Model {
 			// echo 'Database connection created</br></br>';
 		}
 		catch (PDOEXception $e) {
-			echo "I'm sorry, Martin. I'm afraid I can't connect to the database!";
+			echo "I'm sorry, Quill. I'm afraid I can't connect to the database!";
 			// Generate an error message if the connection fails
         	print new Exception($e->getMessage());
     	}
