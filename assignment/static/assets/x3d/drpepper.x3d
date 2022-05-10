@@ -2,25 +2,19 @@
 <!DOCTYPE X3D PUBLIC "ISO//Web3D//DTD X3D 3.0//EN" "http://www.web3d.org/specifications/x3d-3.0.dtd">
 <X3D xmlns:xsd='http://www.w3.org/2001/XMLSchema-instance' profile='Full' version='3.0' xsd:noNamespaceSchemaLocation='http://www.web3d.org/specifications/x3d-3.0.xsd'>
   <Scene DEF='scene'>
-    <Transform DEF='Camera' rotation='0.0363 -0.998647 -0.037234 1.54676' translation='-8.26256 120.197 -510.671'>
+    <Transform DEF='Camera' rotation='0 -1 0 1.5708' translation='0 100.275 -518.421'>
       <Viewpoint DEF='View_Camera' description='Camera' orientation='0 -1 0 1.5708' position='0 0 0' fieldOfView='0.927295'/>
     </Transform>
-    <Transform DEF='Cloner' translation='0 85.026 0'>
-      <Transform DEF='Light_1_0' translation='500 0 0'>
-        <PointLight DEF='LIGHT_Light_1_0' color='0.57735 0.57735 0.57735' intensity='1.29904' radius='1e+08'/>
-      </Transform>
-      <Transform DEF='Light_1_1' rotation='0 -1 0 2.09439' translation='-250 0 433.013'>
-        <PointLight DEF='LIGHT_Light_1_1' color='0.57735 0.57735 0.57735' intensity='1.29904' radius='1e+08'/>
-      </Transform>
-      <Transform DEF='Light_1_2' rotation='0 1 0 2.09439' translation='-250 0 -433.013'>
-        <PointLight DEF='LIGHT_Light_1_2' color='0.57735 0.57735 0.57735' intensity='1.29904' radius='1e+08'/>
-      </Transform>
+    <Transform DEF='Light_2' rotation='0 1 0 1.5708' translation='-37.7074 89.1247 -260.417'>
+      <PointLight DEF='LIGHT_Light_2' radius='1e+08'/>
     </Transform>
-    <Transform DEF='Light' rotation='0.230846 -0.797567 -0.557312 0.95801' translation='-500 500 -500'>
-      <SpotLight DEF='LIGHT_Light' cutOffAngle='0.523599' direction='1 0 0' radius='1e+08'/>
+    <Transform DEF='Light_1' translation='151.451 89.1247 0'>
+      <PointLight DEF='LIGHT_Light_1' radius='1e+08'/>
     </Transform>
-    <Transform DEF='Light_Target_1' translation='0 53.2458 0'/>
-    <Transform DEF='Cylinder' translation='0 82.0804 0'>
+    <Transform DEF='Light' translation='-172.362 89.1247 0'>
+      <PointLight DEF='LIGHT_Light' radius='1e+08'/>
+    </Transform>
+    <Transform DEF='Cylinder' rotation='0 1 0 0.610865' translation='0 82.0804 0'>
       <Shape>
         <Appearance DEF='MAT_Mat'>
           <Material diffuseColor='0.5 0.5 0.5' shininess='0.025' specularColor='0.025 0.025 0.025'/>
@@ -33,5 +27,8 @@
       </Shape>
     </Transform>
     <TimeSensor DEF='Timer' cycleInterval='3' loop='true'/>
+    <OrientationInterpolator DEF='ROTKEY_Cylinder' key='0 0.333333 0.666667 1' keyValue='0 1 0 0.610865 0.060267 0.97971 0.191143 0.622722 0 1 0 0.610865 0 1 0 0.610865'/>
+    <ROUTE fromNode='Timer' fromField='fraction_changed' toNode='ROTKEY_Cylinder' toField='set_fraction'/>
+    <ROUTE fromNode='ROTKEY_Cylinder' fromField='value_changed' toNode='Cylinder' toField='set_rotation'/>
   </Scene>
 </X3D>
