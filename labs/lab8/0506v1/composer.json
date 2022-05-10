@@ -1,0 +1,13 @@
+{
+    "name": "qingsheng/php-restful-api",
+    "description": "Une desc",
+    "require": {
+        "bcosca/fatfree": "~3.4"
+    },
+    "authors": [
+        {
+            "name": "qingsheng",
+            "email": "xxxquillsq@gmail.com"
+        }
+    ]
+}
